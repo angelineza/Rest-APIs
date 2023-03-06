@@ -1,0 +1,301 @@
+{
+    "swagger":"2.0",
+    "info": {
+        "description":"User system",
+        "title":"User  system"
+    },
+    "tags":[
+        {
+            "name":"User"
+        }
+    ],
+    "paths":{
+        "/user":{
+            "post":{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Signing up a user  ",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "type":"object",
+                        "properties":{
+                            "name":{
+                                "type":"string",
+                                "required":true
+                                
+                            },
+                            "email":{
+                                "type":"string",
+                                "required":true
+                                
+                            },
+                            "password":{
+                                "type":"string",
+                                "required":true
+                                
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                    "description":"Signed up successfully"
+                },
+                "201":{
+                    "description":"Created the user account"
+                },
+                "400":{
+                    "description":"Invalid Data"
+                },
+                "500":{
+                    "description":"Internal server error"
+                }
+            }
+            }
+        },
+        "/user/login":{
+            "post":{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Loging in  ",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "type":"object",
+                        "properties":{
+                            "name":{
+                                "type":"string",
+                                "required":"true"
+                            },
+         
+                            "email":{
+                                "type":"string",
+                                "required":true
+                                
+                            },
+                            "password":{
+                                "type":"string",
+                                "required":true
+                                
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                    "description":"Logged in successfully"
+                },
+                "201":{
+                    "description":"Entered"
+                },
+                "400":{
+                    "description":"Invalid entered data"
+                },
+                "500":{
+                    "description":"Internal server error"
+                }
+            }
+            }
+        },
+        "/users":{
+            "get":{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Getting a list of all users in the database",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "type":"object",
+                        "required":true,
+                        "description":"Token"
+ 
+                        }
+                    
+                ],
+                "responses":{
+                    "200":{
+                    "description":"Success"
+                },
+                "201":{
+                    "description":"Created"
+                },
+                "400":{
+                    "description":"Invalid data was entered"
+                },
+                "500":{
+                    "description":"Internal server error"
+                }
+            }
+            }
+        },
+        "/user/update/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Updating user data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type":"object",
+                        "required": true,
+                        "description": "Token"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"the user's id",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type" : "object",
+                        "properties": {
+                            "username": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "email": {
+                                "type": "string",
+                                "required":true
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/users/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "deleting a user by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "myToken",
+                        "required": true,
+                        "description": "token"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid entered data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/users/{name}":{
+            "get":{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Getting a user by name",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "type":"object",
+                        "required":true
+ 
+                        }
+                    
+                ],
+                "responses":{
+                    "200":{
+                    "description":"Successfully found"
+                },
+                "201":{
+                    "description":"Created"
+                },
+                "400":{
+                    "description":"Invalid data was entered"
+                },
+                "500":{
+                    "description":"Internal server error"
+                }
+            }
+            }
+        }
+    }
+}
